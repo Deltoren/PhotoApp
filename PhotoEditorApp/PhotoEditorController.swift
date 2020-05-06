@@ -13,6 +13,8 @@ class PhotoEditorController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var imageViewSecond: UIImageView!
     
+    
+    var turn: (CGFloat) = 0
     var newImage: UIImage!
     
     
@@ -21,10 +23,16 @@ class PhotoEditorController: UIViewController, UIImagePickerControllerDelegate, 
         imageViewSecond.image = newImage
     }
     
-    var turnLeft: (CGFloat) = -.pi / 2
     @IBAction func turnLeftButton(_ sender: UIButton) {
-        imageViewSecond.transform = CGAffineTransform.init(rotationAngle: turnLeft)
-        turnLeft -= .pi / 2
+        turn += .pi / 2
+        imageViewSecond.transform = CGAffineTransform.init(rotationAngle: turn)
     }
+    
+    
+    @IBAction func turnRightButton(_ sender: UIButton) {
+        turn -= .pi / 2
+        imageViewSecond.transform = CGAffineTransform.init(rotationAngle: turn)
+    }
+    
     
 }
